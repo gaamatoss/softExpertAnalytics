@@ -1,0 +1,68 @@
+{
+	"env": {
+		"browser": true,
+		"es2021": true
+	},
+	"extends": [
+		"eslint:recommended",
+		"plugin:react/recommended"
+	],
+	"overrides": [
+	],
+	"parserOptions": {
+		"ecmaVersion": "latest",
+		"sourceType": "module"
+	},
+	"plugins": [
+		"react"
+	],
+	"rules": {
+		"indent": [
+			"error",
+			"tab"
+		],
+		"linebreak-style": [
+			"error",
+			"unix"
+		],
+		"quotes": [
+			"error",
+			"single"
+		],
+		"semi": [
+			"error",
+			"always"
+		],
+		"arrow-parens": ["error", "as-needed"],
+		"eol-last": ["error", "never"],
+		"no-unused-vars": ["error", {
+			"argsIgnorePattern": "^_"
+		}],
+		"object-curly-spacing": ["error", "always"],
+		"object-shorthand": ["error", "properties"],
+		"react/jsx-tag-spacing": ["error", {
+			"afterOpening": "never",
+			"beforeClosing": "never",
+			"beforeSelfClosing": "always",
+			"closingSlash": "never"
+		}],
+		"react/jsx-curly-spacing": ["error", {
+			"when": "never",
+			"children": { "when": "always" }
+		}],
+		"react/jsx-curly-brace-presence": ["error", {
+			"props": "always",
+			"children": "always"
+		}],
+		"no-multiple-empty-lines": ["error", { "max": 1, "maxEOF": 0 }],
+		"react/no-unused-prop-types": "error",
+		"prefer-destructuring": ["error", {
+			"VariableDeclarator": {
+				"object": true
+			}
+		}],
+		"react/prop-types": ["error", {
+			"ignore": ["getToken", "context", "children"]
+		}]
+	}
+}
