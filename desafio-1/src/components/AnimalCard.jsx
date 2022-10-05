@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import FeedbackAlert from './FeedbackAlert'
 
 const cardStyles = {
 	background: '#fff',
@@ -13,61 +14,25 @@ const cardStyles = {
 
 const colors = ['red', 'blue', 'green', 'yellow', 'aqua', 'tomato'];
 
-class FeedbackAlert extends Component {
-	constructor(props) {
-		super(props);
+// export default class AnimalCard extends Component {
+export default function AnimalCard(props) {
+	// constructor(props) {
+	// 	super(props);
 
-		this.handleClean = this.handleClean.bind(this);
+	// }
+	this.state = {
+		animal: props,
+		color: '',
+		changedColor: false
+	};
 
-		this.state = {
-			show: props.show
-		};
-	}
-
-	componentDidUpdate(prevProps) {
-		if (prevProps.show !== this.props.show) {
-			this.setState({ show: this.props.show });
-		}
-	}
-
-	handleClean() {
-		this.setState({ show: false }, () => {
-			this.props.callback();
-		});
-	}
-
-	render() {
-		return this.state.show && (
-			<div style={{ display: 'flex', gap: 8 }}>
-				<div>
-					{'cor alterada!'}
-				</div>
-				<button onClick={this.handleClean}>
-					{'ok'}
-				</button>
-			</div>
-		);
-	}
-}
-
-export default class AnimalCard extends Component {
-	constructor(props) {
-		super(props);
-
-		this.state = {
-			animal: props,
-			color: '',
-			changedColor: false
-		};
-	}
-
-	componentDidUpdate(_prevProps, prevState) {
+	function componentDidUpdate(_prevProps, prevState) {
 		if (prevState.color !== this.state.color) {
 			this.setState({ changedColor: true });
 		}
 	}
 
-	renderColorSelector() {
+	function renderColorSelector() {
 		return (
 			<div style={{ display: 'flex', gap: 8 }}>
 				<select onChange={e => {
@@ -86,30 +51,28 @@ export default class AnimalCard extends Component {
 		);
 	}
 
-	render() {
-		return (
-			<div style={{ ...cardStyles, backgroundColor: colors[this.state.color] }} data-testid={'card'}>
-				{(
-					(animal) => {
-						return (
-							<Fragment>
-								<div style={{ height: 75, padding: 8, display: 'flex', flexDirection: 'column', gap: 8 }}>
-									{this.renderColorSelector()}
-									<p data-testid={'name'}>
-										<strong>{'Name: '}</strong>
-										{animal.name}
-									</p>
-									<p data-testid={'type'}>
-										<strong>{'Type: '}</strong>
-										{this.state.animal.animal_type}
-									</p>
-								</div>
-								<div style={(() => ({ width: '100%', height: 200, backgroundImage: `url(${this.state.animal.image_link})`, backgroundRepeat: 'no-repeat', backgroundPosition: 'center', backgroundSize: 'cover' }))()} />
-							</Fragment>
-						);
-					}
-				)(this.props)}
-			</div>
-		);
-	}
+	return (
+		<div style={{ ...cardStyles, backgroundColor: colors[this.state.color] }} data-testid={'card'}>
+			{(
+				(animal) => {
+					return (
+						<Fragment>
+							<div style={{ height: 75, padding: 8, display: 'flex', flexDirection: 'column', gap: 8 }}>
+								{renderColorSelector()}
+								<p data-testid={'name'}>
+									<strong>{'Name: '}</strong>
+									{animal.name}
+								</p>
+								<p data-testid={'type'}>
+									<strong>{'Type: '}</strong>
+									{this.state.animal.animal_type}
+								</p>
+							</div>
+							<div style={(() => ({ width: '100%', height: 200, backgroundImage: `url(${this.state.animal.image_link})`, backgroundRepeat: 'no-repeat', backgroundPosition: 'center', backgroundSize: 'cover' }))()} />
+						</Fragment>
+					);
+				}
+			)(this.props)}
+		</div>
+	);
 }

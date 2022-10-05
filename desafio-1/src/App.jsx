@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import AnimalCard from 'src/components/AnimalCard';
 import AnimalServices from 'src/utils/AnimalServices';
 
-function App() {
+export default function App() {
 	const [list, setList] = useState([]);
 	const [filteredList, setFilteredList] = useState([]);
 	const [search, setSearch] = useState("");
@@ -10,7 +10,6 @@ function App() {
 
 	const handleFavorite = (item) => {
 		const newFavorites = [...favorites, item];
-
 		setFavorites(newFavorites);
 	};
 
@@ -23,7 +22,6 @@ function App() {
 	useEffect(() => {
 		if (search !== '') {
 			let lista = list.filter(item => item.name.includes(search));
-
 			setFilteredList(lista);
 		}
 	}, [search, filteredList]);
@@ -47,7 +45,7 @@ function App() {
 						{
 							search !== '' ? (
 								filteredList.map(item => {
-									const isFavorito = favorites.find(favorito => item.name === favorito.name);
+									const isfavorite = favorites.find(favorite => item.name === favorite.name);
 
 									return (
 										<tr data-testid={'row-data'}>
@@ -59,7 +57,7 @@ function App() {
 													onClick={() => handleFavorite(item)}
 													data-testid={'star'}
 												>
-													{isFavorito ? '★' : '☆'}
+													{isfavorite ? '★' : '☆'}
 												</a>
 											</td>
 										</tr>
@@ -67,8 +65,8 @@ function App() {
 								})
 							) : (
 								list.map(item => {
-									const isFavorito = favorites.find(favorito => {
-										return item.name === favorito.name;
+									const isfavorite = favorites.find(favorite => {
+										return item.name === favorite.name;
 									});
 
 									return (
@@ -81,7 +79,7 @@ function App() {
 													onClick={() => handleFavorite(item)}
 													data-testid={'star'}
 												>
-													{isFavorito ? '★' : '☆'}
+													{isfavorite ? '★' : '☆'}
 												</a>
 											</td>
 										</tr>
@@ -97,7 +95,6 @@ function App() {
 					favorites.length > 0 && (
 						favorites.map(item => {
 							const animal = { ...item };
-
 							return (
 								<AnimalCard {...animal} />
 							);
@@ -108,5 +105,3 @@ function App() {
 		</main>
 	);
 }
-
-export default App
