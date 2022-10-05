@@ -40,17 +40,17 @@ class FeedbackAlert extends Component {
 		return this.state.show && (
 			<div style={{ display: 'flex', gap: 8 }}>
 				<div>
-					{ 'cor alterada!' }
+					{'cor alterada!'}
 				</div>
 				<button onClick={this.handleClean}>
-					{ 'ok' }
+					{'ok'}
 				</button>
 			</div>
 		);
 	}
 }
 
-class AnimalCard extends Component {
+export default class AnimalCard extends Component {
 	constructor(props) {
 		super(props);
 
@@ -73,13 +73,13 @@ class AnimalCard extends Component {
 				<select onChange={e => {
 					this.setState({ color: colors.findIndex(item => e.target.value && item === e.target.value) });
 				}}>
-					<option value={''} selected>{ 'Cor de fundo' }</option>
-					<option value={'red'}>{ 'red' }</option>
-					<option value={'blue'}>{ 'blue' }</option>
-					<option value={'green'}>{ 'green' }</option>
-					<option value={'yellow'}>{ 'yellow' }</option>
-					<option value={'aqua'}>{ 'aqua' }</option>
-					<option value={'tomato'}>{ 'tomato' }</option>
+					<option value={''} selected>{'Cor de fundo'}</option>
+					<option value={'red'}>{'red'}</option>
+					<option value={'blue'}>{'blue'}</option>
+					<option value={'green'}>{'green'}</option>
+					<option value={'yellow'}>{'yellow'}</option>
+					<option value={'aqua'}>{'aqua'}</option>
+					<option value={'tomato'}>{'tomato'}</option>
 				</select>
 				<FeedbackAlert show={this.state.changedColor} callback={() => this.setState({ changedColor: false })} />
 			</div>
@@ -89,29 +89,27 @@ class AnimalCard extends Component {
 	render() {
 		return (
 			<div style={{ ...cardStyles, backgroundColor: colors[this.state.color] }} data-testid={'card'}>
-				{ (
+				{(
 					(animal) => {
 						return (
 							<Fragment>
 								<div style={{ height: 75, padding: 8, display: 'flex', flexDirection: 'column', gap: 8 }}>
-									{ this.renderColorSelector() }
+									{this.renderColorSelector()}
 									<p data-testid={'name'}>
-										<strong>{ 'Name: ' }</strong>
-										{ animal.name }
+										<strong>{'Name: '}</strong>
+										{animal.name}
 									</p>
 									<p data-testid={'type'}>
-										<strong>{ 'Type: ' }</strong>
-										{ this.state.animal.animal_type }
+										<strong>{'Type: '}</strong>
+										{this.state.animal.animal_type}
 									</p>
 								</div>
 								<div style={(() => ({ width: '100%', height: 200, backgroundImage: `url(${this.state.animal.image_link})`, backgroundRepeat: 'no-repeat', backgroundPosition: 'center', backgroundSize: 'cover' }))()} />
 							</Fragment>
 						);
 					}
-				)(this.props) }
+				)(this.props)}
 			</div>
 		);
 	}
 }
-
-export default AnimalCard;

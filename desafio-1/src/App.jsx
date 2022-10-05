@@ -22,8 +22,8 @@ function App() {
 
 	useEffect(() => {
 		if (search !== '') {
-			var lista = list.filter(item => item.name.includes(search));
-	
+			let lista = list.filter(item => item.name.includes(search));
+
 			setFilteredList(lista);
 		}
 	}, [search, filteredList]);
@@ -39,8 +39,8 @@ function App() {
 							</th>
 						</tr>
 						<tr>
-							<th>{ 'Nome' }</th>
-							<th>{ '⭐️' }</th>
+							<th>{'Nome'}</th>
+							<th>{'⭐️'}</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -59,7 +59,7 @@ function App() {
 													onClick={() => handleFavorite(item)}
 													data-testid={'star'}
 												>
-													{ isFavorito ? '★' : '☆' }
+													{isFavorito ? '★' : '☆'}
 												</a>
 											</td>
 										</tr>
@@ -81,7 +81,7 @@ function App() {
 													onClick={() => handleFavorite(item)}
 													data-testid={'star'}
 												>
-													{ isFavorito ? '★' : '☆' }
+													{isFavorito ? '★' : '☆'}
 												</a>
 											</td>
 										</tr>
@@ -109,4 +109,4 @@ function App() {
 	);
 }
 
-export default App;
+export default App
