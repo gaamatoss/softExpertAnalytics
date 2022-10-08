@@ -13,8 +13,7 @@ export default function App() {
 	};
 
 	useEffect(() => {
-		AnimalServices
-			.getAnimals()
+		AnimalServices()
 			.then(setList);
 	}, []);
 
