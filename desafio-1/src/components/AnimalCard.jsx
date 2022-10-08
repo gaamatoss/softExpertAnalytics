@@ -62,7 +62,7 @@ export default function AnimalCard(props) {
 									{props.animal_type}
 								</p>
 							</div>
-							<div style={(() => ({ width: '100%', height: 200, backgroundImage: `url(${props.image_link})`, backgroundRepeat: 'no-repeat', backgroundPosition: 'center', backgroundSize: 'cover' }))()} />
+							<div style={{ width: '100%', height: 200, backgroundImage: `url(${props.image_link})`, backgroundRepeat: 'no-repeat', backgroundPosition: 'center', backgroundSize: 'cover' }} />
 						</Fragment>
 					);
 				}
