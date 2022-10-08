@@ -9,8 +9,7 @@ export default function App() {
 	const [favorites, setFavorites] = useState([]);
 
 	const handleFavorite = (item) => {
-		const newFavorites = [...favorites, item];
-		setFavorites(newFavorites);
+		setFavorites([...favorites, item]);
 	};
 
 	useEffect(() => {
@@ -24,7 +23,7 @@ export default function App() {
 			let lista = list.filter(item => item.name.includes(search));
 			setFilteredList(lista);
 		}
-	}, [search, filteredList]);
+	}, [search]);
 
 	return (
 		<main style={{ display: 'flex', justifyContent: 'space-between' }}>
@@ -48,7 +47,7 @@ export default function App() {
 									const isfavorite = favorites.find(favorite => item.name === favorite.name);
 
 									return (
-										<tr data-testid={'row-data'}>
+										<tr key={item.id} data-testid={'row-data'}>
 											<td>{item.name}</td>
 											<td>
 												<a
@@ -70,7 +69,7 @@ export default function App() {
 									});
 
 									return (
-										<tr data-testid={'row-data'}>
+										<tr key={item.id} data-testid={'row-data'}>
 											<td>{item.name}</td>
 											<td>
 												<a
@@ -93,10 +92,9 @@ export default function App() {
 			<div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
 				{
 					favorites.length > 0 && (
-						favorites.map(item => {
-							const animal = { ...item };
+						favorites.map(animals => {
 							return (
-								<AnimalCard {...animal} />
+								<AnimalCard key={animals.id} {...animals} />
 							);
 						})
 					)

@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Fragment, useState, useEffect } from 'react';
 import FeedbackAlert from './FeedbackAlert'
 
 const cardStyles = {
@@ -14,65 +14,59 @@ const cardStyles = {
 
 const colors = ['red', 'blue', 'green', 'yellow', 'aqua', 'tomato'];
 
-// export default class AnimalCard extends Component {
 export default function AnimalCard(props) {
-	// constructor(props) {
-	// 	super(props);
 
-	// }
-	this.state = {
-		animal: props,
-		color: '',
-		changedColor: false
-	};
+	const [color, setColor] = useState('')
+	const [changedColor, setChangedColor] = useState(false)
+	const handleClean = () => setChangedColor(false)
 
-	function componentDidUpdate(_prevProps, prevState) {
-		if (prevState.color !== this.state.color) {
-			this.setState({ changedColor: true });
+	useEffect(() => {
+		if (color !== '') {
+			setChangedColor(true)
 		}
-	}
+	}, [color]);
 
 	function renderColorSelector() {
 		return (
 			<div style={{ display: 'flex', gap: 8 }}>
-				<select onChange={e => {
-					this.setState({ color: colors.findIndex(item => e.target.value && item === e.target.value) });
-				}}>
-					<option value={''} selected>{'Cor de fundo'}</option>
-					<option value={'red'}>{'red'}</option>
-					<option value={'blue'}>{'blue'}</option>
-					<option value={'green'}>{'green'}</option>
-					<option value={'yellow'}>{'yellow'}</option>
-					<option value={'aqua'}>{'aqua'}</option>
-					<option value={'tomato'}>{'tomato'}</option>
+				<select defaultValue={''} onChange={e =>
+					setColor(colors.findIndex(color => e.target.value && color === e.target.value))
+				}>
+					<option value={''}>{'Default'}</option>
+					<option value={'red'}>{'Red'}</option>
+					<option value={'blue'}>{'Blue'}</option>
+					<option value={'green'}>{'Green'}</option>
+					<option value={'yellow'}>{'Yellow'}</option>
+					<option value={'aqua'}>{'Aqua'}</option>
+					<option value={'tomato'}>{'Tomato'}</option>
 				</select>
-				<FeedbackAlert show={this.state.changedColor} callback={() => this.setState({ changedColor: false })} />
+				<FeedbackAlert show={changedColor} callback={handleClean} />
 			</div>
 		);
 	}
 
 	return (
-		<div style={{ ...cardStyles, backgroundColor: colors[this.state.color] }} data-testid={'card'}>
+		<div style={{ ...cardStyles, backgroundColor: colors[color] }} data-testid={'card'}>
 			{(
-				(animal) => {
+				(props) => {
 					return (
 						<Fragment>
 							<div style={{ height: 75, padding: 8, display: 'flex', flexDirection: 'column', gap: 8 }}>
 								{renderColorSelector()}
 								<p data-testid={'name'}>
 									<strong>{'Name: '}</strong>
-									{animal.name}
+									{props.name}
 								</p>
 								<p data-testid={'type'}>
 									<strong>{'Type: '}</strong>
-									{this.state.animal.animal_type}
+									{props.animal_type}
 								</p>
 							</div>
-							<div style={(() => ({ width: '100%', height: 200, backgroundImage: `url(${this.state.animal.image_link})`, backgroundRepeat: 'no-repeat', backgroundPosition: 'center', backgroundSize: 'cover' }))()} />
+							<div style={(() => ({ width: '100%', height: 200, backgroundImage: `url(${props.image_link})`, backgroundRepeat: 'no-repeat', backgroundPosition: 'center', backgroundSize: 'cover' }))()} />
 						</Fragment>
 					);
 				}
-			)(this.props)}
+			)(props)}
 		</div>
 	);
 }
