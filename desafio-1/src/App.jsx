@@ -20,7 +20,8 @@ export default function App() {
 
 	useEffect(() => {
 		if (search !== '') {
-			let lista = list.filter(item => item.name.includes(search));
+			let filterSearch = search.toLowerCase();
+			let lista = list.filter(item => item.name.toLowerCase().includes(filterSearch));
 			setFilteredList(lista);
 		}
 	}, [search]);
