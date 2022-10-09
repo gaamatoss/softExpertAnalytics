@@ -24,6 +24,11 @@
     background-color: white;
     color: #292929;
     overflow: scroll;
+    
+}
+
+.table__body tr {
+    border-bottom: 1px solid #888888;
 }
 
 .pagination__btn {
