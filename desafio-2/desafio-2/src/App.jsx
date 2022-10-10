@@ -1,4 +1,3 @@
-import react from 'react'
 import NavBar from './components/Navbar/NavBar'
 import TelaPrincipal from './views/TelaPrincipal'
 import TelaDados from './views/TelaDados'

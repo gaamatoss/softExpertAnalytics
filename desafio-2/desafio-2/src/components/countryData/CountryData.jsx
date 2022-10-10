@@ -26,15 +26,15 @@ export default function CountryData() {
         <div className='mainData'>
             <Panel header="Brasil" bordered className='panelData' >
                 <HighchartsReact highcharts={Highcharts} options={chartOptions} />
-                <Link to={'/detalhamento'}><Button appearance='primary'>View Detail</Button></Link>
+                <Link to={'/detalhamento'}><Button appearance='primary'>View Details</Button></Link>
             </Panel>
             <Panel header="Argentina" bordered className='panelData' >
                 <HighchartsReact highcharts={Highcharts} options={chartOptions} />
-                <Link to={'/detalhamento'}><Button appearance='primary'>View Detail</Button></Link>
+                <Link to={'/detalhamento'}><Button appearance='primary'>View Details</Button></Link>
             </Panel>
             <Panel header="Chile" bordered className='panelData'>
                 <HighchartsReact highcharts={Highcharts} options={chartOptions} />
-                <Link to={'/detalhamento'}><Button appearance='primary'>View Detail</Button></Link>
+                <Link to={'/detalhamento'}><Button appearance='primary'>View Details</Button></Link>
             </Panel>
         </div>
     )

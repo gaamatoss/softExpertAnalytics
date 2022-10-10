@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom'
-import ApiService from '../../controller/ApiService'
+import ApiService from '../../Utils/ApiService'
 import './countryContent.css'
 
 export default function CountryContent() {
@@ -58,7 +58,7 @@ export default function CountryContent() {
                         ) : (
                             currentItens.map(item => {
                                 return (
-                                    <tr style={{ display: 'flex', justifyContent: 'space-between', padding: '10px' }}>
+                                    <tr key={item.ISO2} style={{ display: 'flex', justifyContent: 'space-between', padding: '10px' }}>
                                         <td><input type="checkbox" /></td>
                                         <td>{item.Country}</td>
                                         <td>{item.ISO2}</td>

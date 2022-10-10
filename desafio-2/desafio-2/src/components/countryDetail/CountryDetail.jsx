@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import ApiServiceDetail from '../../controller/ApiServiceDetail';
+import ApiServiceDetail from '../../Utils/ApiServiceDetail';
 import './countryDetail.css'
 
 export default function CountryDetail() {
@@ -9,7 +9,6 @@ export default function CountryDetail() {
         ApiServiceDetail()
             .then(setInfoList)
     }, [])
-    console.log(infoList);
 
     function dateFormat(date) {
         let data = new Date(date)
