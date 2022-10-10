@@ -9,6 +9,8 @@ export default function NavBar() {
             <Navbar.Brand href="#">Covid Data</Navbar.Brand>
             <Nav>
                 <Nav.Item icon={<HomeIcon />} href="/">Home</Nav.Item>
+                <Nav.Item href="/dados">Dados</Nav.Item>
+                <Nav.Item href="/detalhamento">Detalhamento</Nav.Item>
             </Nav>
         </Navbar>
     )

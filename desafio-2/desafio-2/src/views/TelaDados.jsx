@@ -1,9 +1,10 @@
-import React from "react";
+import React from 'react';
+import CountryData from "../components/countryData/CountryData";
 
 export default function TelaDados() {
     return (
         <div>
-            Tela Dados
+            <CountryData />
         </div>
     )
 }

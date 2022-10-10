@@ -1,0 +1,32 @@
+.main {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 10px 0px;
+}
+
+.table__detail {
+    width: 50%;
+    height: 30vh;
+    margin-bottom: 2rem;
+}
+.table__head {
+    height: 30px;
+    background-color: #292929;
+    color: white;
+}
+
+.table__body {
+    height: 20vh;
+    background-color: white;
+    color: #292929;
+    overflow: scroll;
+    
+}
+
+.table__body tr {
+    border-bottom: 1px solid #888888;
+}
