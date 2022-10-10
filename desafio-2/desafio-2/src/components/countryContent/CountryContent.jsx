@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom'
 import ApiService from '../../controller/ApiService'
 import './countryContent.css'
 
-export default function CountryTable() {
+export default function CountryContent() {
 
     const [countrylist, setCountryList] = useState([])
     const [filteredList, setFilteredList] = useState([]);
@@ -22,7 +23,7 @@ export default function CountryTable() {
     useEffect(() => {
         if (searchValue !== '') {
             let filterSearch = searchValue.toLowerCase();
-            let list = countrylist.filter(item => item.Country.toLowerCase().includes(filterSearch));
+            let list = countrylist.filter(item => (item.Country.toLowerCase().includes(filterSearch)) || (item.ISO2.toLowerCase().includes(filterSearch)));
             setFilteredList(list);
         }
     }, [searchValue])
@@ -32,19 +33,7 @@ export default function CountryTable() {
         <div className="countrytable">
             <div style={{ width: '30%', display: 'flex', padding: '20px 0px' }}>
                 <input placeholder='Search Country' style={{ width: '100%', marginRight: '10px', padding: '10px', borderRadius: '5px' }} value={searchValue} onChange={e => setSearchValue(e.target.value)} />
-                <button style={{ width: '30%', backgroundColor: '#292929', color: 'white', borderRadius: '5px' }}>View</button>
-            </div>
-            <div>
-                {searchValue !== '' ? (
-                    ''
-                ) : (Array.from(Array(pages), (item, index) => {
-                    return <button
-                        className='pagination__btn'
-                        value={index}
-                        onClick={(e) => setCurrentPage(Number(e.target.value))}
-                    >{index + 1}</button>
-                }))}
-
+                <Link className='view__btn' to={'dados'}>View</Link>
             </div>
             <table className="table">
                 <thead className="table__head">
@@ -54,7 +43,7 @@ export default function CountryTable() {
                         <td>Symbol</td>
                     </tr>
                 </thead>
-                <tbody className="table__body">
+                <tbody className="table__body" >
                     {
                         searchValue !== '' ? (
                             filteredList.map(item => {
@@ -79,6 +68,17 @@ export default function CountryTable() {
                     }
                 </tbody>
             </table>
+            <div>
+                {searchValue !== '' ? (
+                    ''
+                ) : (Array.from(Array(pages), (item, index) => {
+                    return <button
+                        className='pagination__btn'
+                        value={index}
+                        onClick={(e) => setCurrentPage(Number(e.target.value))}
+                    >{index + 1}</button>
+                }))}
+            </div>
         </div>
     )
 }

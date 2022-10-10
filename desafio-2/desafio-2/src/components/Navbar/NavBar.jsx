@@ -8,9 +8,7 @@ export default function NavBar() {
         <Navbar className="navbar">
             <Navbar.Brand href="#">Covid Data</Navbar.Brand>
             <Nav>
-                <Nav.Item icon={<HomeIcon />}>Tela Principal</Nav.Item>
-                <Nav.Item>Dados</Nav.Item>
-                <Nav.Item>Detalhamento</Nav.Item>
+                <Nav.Item icon={<HomeIcon />} href="/">Home</Nav.Item>
             </Nav>
         </Navbar>
     )

@@ -10,7 +10,7 @@
 .table {
     width: 40%;
     height: 30vh;
-    margin-top: 2rem;
+    margin-bottom: 2rem;
 }
 
 .table__head {
@@ -39,9 +39,26 @@
     width: 35px;
     height: 35px;
     border-radius: 5px; 
-    transition: .3s ease-in-out;
+    transition: .25s ease-in-out;
 }
 
 .pagination__btn:hover {
     opacity: .8;
+}
+.view__btn {
+    width: 30%;
+    background-color: #292929; 
+    color: white;
+    text-decoration: none; 
+    border-radius: 5px; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: .25s ease-in-out;
+}
+
+.view__btn:hover {
+    text-decoration: none; 
+    opacity: .8;
+    color: white;
 }
