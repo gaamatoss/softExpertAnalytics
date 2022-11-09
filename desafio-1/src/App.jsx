@@ -9,7 +9,13 @@ export default function App() {
 	const [favorites, setFavorites] = useState([]);
 
 	const handleFavorite = (item) => {
-		setFavorites([...favorites, item]);
+		if (favorites.includes(item)){
+			let itemPosition = favorites.indexOf(item, 0)
+			favorites.splice(itemPosition, 1)
+			setFavorites([...favorites]);
+		}else {
+			setFavorites([...favorites, item]);
+	}
 	};
 
 	useEffect(() => {
@@ -45,7 +51,7 @@ export default function App() {
 						{
 							search !== '' ? (
 								filteredList.map(item => {
-									const isfavorite = favorites.find(favorite => item.name === favorite.name);
+									const isFavorite = favorites.find(favorite => item.name === favorite.name);
 
 									return (
 										<tr key={item.id} data-testid={'row-data'}>
@@ -57,7 +63,7 @@ export default function App() {
 													onClick={() => handleFavorite(item)}
 													data-testid={'star'}
 												>
-													{isfavorite ? '★' : '☆'}
+													{isFavorite ? '★' : '☆'}
 												</a>
 											</td>
 										</tr>
@@ -65,7 +71,7 @@ export default function App() {
 								})
 							) : (
 								list.map(item => {
-									const isfavorite = favorites.find(favorite => {
+									const isFavorite = favorites.find(favorite => {
 										return item.name === favorite.name;
 									});
 
@@ -79,7 +85,7 @@ export default function App() {
 													onClick={() => handleFavorite(item)}
 													data-testid={'star'}
 												>
-													{isfavorite ? '★' : '☆'}
+													{isFavorite ? '★' : '☆'}
 												</a>
 											</td>
 										</tr>
